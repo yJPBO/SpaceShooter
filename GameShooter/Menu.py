@@ -31,6 +31,10 @@ class Menu:
                     self.menu_text(
                         18, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), (400 + i*29)))
 
+            self.menu_text(
+                10, f"Player 1: Move = W/A/S/D     Shoot = LCtrl", C_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT - 25))
+            self.menu_text(
+                10, f"Player 2: Move = Setas       Shoot = RCtrl", C_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT - 10))
             pygame.display.flip()
 
             for event in pygame.event.get():
@@ -38,12 +42,12 @@ class Menu:
                     pygame.quit()
                     quit()
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_s:
+                    if event.key in [pygame.K_s, pygame.K_DOWN]:
                         if menu_option < len(MENU_OPTION) - 1:
                             menu_option += 1
                         else:
                             menu_option = 0
-                    if event.key == pygame.K_w:
+                    if event.key in [pygame.K_w, pygame.K_UP]:
                         if menu_option > 0:
                             menu_option -= 1
                         else:
